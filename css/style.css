@@ -3,12 +3,32 @@ h1 {
 	font-weight: bold;
 }
 
-html {
-    padding: 10%;
+body {
+    text-align: center;
+    background-color: #dfdfdf;
+    display: block;
+    margin: 0px;
+    padding: 0px;
 }
 
-.title {
-    font-size: 30px;
+header {
+    border-top: 3px solid #378b87;
+    min-width: 100%;
+    background-color: #378b87;
+    margin: 0;
+    padding: 1% 0 0 0;
+}
+
+header a {
+    color: #FFFFFF;
+}
+
+footer a {
+    color: #FFFFFF;
+}
+
+#aboutMe p{
+    font-style: italic;
 }
 
 .image_holder {
@@ -18,11 +38,45 @@ html {
 }
 
 .image_holder > img {
-    position: absolute;
-    max-width: 100%; 
+    text-align: unset;
+    position: relative;
+    max-width: 100%;
     max-height: 100%;
+    margin: 0 auto;
 }
 
 .greetings {
     font-size: 50px;
+}
+
+footer {
+    min-width: 100%;
+    background-color: #378b87;
+    margin: 0;
+    padding: 5% 0;
+    color: #FFFFFF;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer ul li {
+    margin: 5px 0;
+}
+
+nav {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline-block;
+    text-align: left;
+    margin: 0 10px;
+    font-size: 20px;
 }
