@@ -53,7 +53,6 @@ clearButton.addEventListener('click', () => {
 showRhymesButton.addEventListener('click', () => {
     let word = wordInput.value;
     getRhymes(word, (results) => {
-        console.log(results);
         clearRhymes();
         printRhymes(results);
     });
