@@ -16,15 +16,15 @@ function getRhymes(rel_rhy, callback) {
 // Write your code here
 
 function addWordToList (word) {
-    let localLi = document.createElement("li");
-    localLi.classList.add("list-group-item");
+    let localLi = document.createElement('li');
+    localLi.classList.add('list-group-item');
     localLi.textContent = word;
     rhymesOutput.append(localLi);
 }
 
 function printRhymes(results) {
     if (checkEmpty(results)) {
-        addWordToList("(no rhymes)");
+        addWordToList('(no rhymes)');
     }
     else {
         for (let idx in results) {
@@ -45,12 +45,12 @@ function checkEmpty(results) {
     return results.length === 0;
 }
 
-clearButton.addEventListener("click", () => {
-    wordInput.value = "";
+clearButton.addEventListener('click', () => {
+    wordInput.value = '';
     clearRhymes();
 });
 
-showRhymesButton.addEventListener("click", () => {
+showRhymesButton.addEventListener('click', () => {
     let word = wordInput.value;
     getRhymes(word, (results) => {
         console.log(results);

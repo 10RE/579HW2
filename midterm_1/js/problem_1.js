@@ -2,7 +2,7 @@
 const btn = document.querySelector('#problem-1 #clickable-button');
 
 function onClickButton() {
-    document.getElementById("clicked-feedback").textContent = "You clicked the button!";
+    document.getElementById('clicked-feedback').textContent = 'You clicked the button!';
 }
 
 btn.addEventListener('click', onClickButton);

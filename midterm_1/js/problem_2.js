@@ -14,15 +14,15 @@ const thingInput = document.querySelector('#problem-2 #thing-num-input');
 const thingCountOutput = document.querySelector('#problem-2 #thing-count');
 
 // Write your code here
-thingCountOutput.textContent = "You added 0 thing";
+thingCountOutput.textContent = 'You added 0 thing';
 
 function changeNum() {
     let num = parseInt(thingInput.value);
-    thingCountOutput.textContent = "You added " + num + " thing" + addS(num);
+    thingCountOutput.textContent = 'You added ' + num + ' thing' + addS(num);
 }
 
 changeNum();
 
-thingInput.addEventListener("input", () => {
+thingInput.addEventListener('input', () => {
     changeNum();
 });
