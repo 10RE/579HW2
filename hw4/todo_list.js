@@ -1,5 +1,5 @@
 function removeTask(obj) {
-    obj.parentNode.remove();
+    
 }
 
 function addTask (description, dueTime = false) {
@@ -9,11 +9,16 @@ function addTask (description, dueTime = false) {
     let taskButton = document.createElement("button");
     taskDue.classList.add("due");
     if (dueTime) {
-        taskDue.textContent = "due " + timestampeTodateAndTime(dueTime);
+        //taskDue.textContent = "due " + timestampeTodateAndTime(dueTime);
+        console.log(new Date(dueTime).getHours());
+        taskDue.textContent = "due " + new Date(dueTime).toLocaleString();
     }
     taskButton.classList.add("btn", "btn-sm", "btn-outline-danger", "done")
     taskButton.setAttribute("type", "button");
-    taskButton.setAttribute("onclick", "removeTask(this)");
+    //taskButton.setAttribute("onclick", "removeTask(this)");
+    taskButton.addEventListener("click", () => {
+        taskButton.parentNode.remove();
+    });
     taskButton.textContent = "Done";
     taskItem.textContent = description;
     taskItem.appendChild(taskDue);
@@ -21,6 +26,7 @@ function addTask (description, dueTime = false) {
     list.appendChild(taskItem);
 }
 
+/*
 function timestampeTodateAndTime(timestamp) {
     dueObj = new Date(timestamp);
     let hours = dueObj.getHours();
@@ -35,8 +41,9 @@ function timestampeTodateAndTime(timestamp) {
     else if (hours === 0) {
         hours = 12;
     }
-    return dueObj.getMonth() + "/" + dueObj.getDate() + "/" + dueObj.getFullYear() + " " + hours + ":" + dueObj.getMinutes() + ":" + dueObj.getSeconds() + " " + noonIndicator;
+    return (dueObj.getMonth() + 1) + "/" + dueObj.getDate() + "/" + dueObj.getFullYear() + " " + hours + ":" + dueObj.getMinutes() + ":" + dueObj.getSeconds() + " " + noonIndicator;
 }
+*/
 
 function dateAndTimeToTimestamp(dateInputElement, timeInputElement) {
     const dueDate = dateInputElement.valueAsNumber; // Returns the timestamp at midnight for the given date
