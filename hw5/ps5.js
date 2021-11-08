@@ -58,7 +58,7 @@ function getRhymes(rel_rhy, callback) {
 }
 
 function getSynoyms(ml, callback) {
-    fetch(`https://api.datamuse.com/words?ml=ringing+in+the+ears`)
+    fetch(`https://api.datamuse.com/words?${(new URLSearchParams({ml})).toString()}`)
         .then((response) => response.json())
         .then((data) => {
             callback(data);
@@ -82,7 +82,7 @@ function saveWord (word) {
     updateSavedWordsLine();
 }
 
-function addWordToList (word, target) {
+function addWordToList (word, target, save=true) {
     let localLi = document.createElement('li');
     
     //localLi.classList.add('col');
@@ -96,14 +96,16 @@ function addWordToList (word, target) {
         saveWord(word);
     });
     saveBtn.textContent = "save";
-    localLi.append(saveBtn);
+    if (save) {
+        localLi.append(saveBtn);
+    }
     target.append(localLi);
 }
 
 function printRhymes(results) {
     titleLine.textContent = "Words that rhyme with " + word;
     if (checkEmpty(results)) {
-        addWordToList('(no rhymes)', listOutput);
+        addWordToList('(no result)', listOutput, false);
     }
     else {
         let tmp_rlt = groupBy(results, 'numSyllables');
@@ -132,7 +134,7 @@ function printRhymes(results) {
 function printSynoyms(results) {
     titleLine.textContent = "Words with a similar meaning to " + word;
     if (checkEmpty(results)) {
-        addWordToList('(no Synoyms)', listOutput);
+        addWordToList('(no result)', listOutput, false);
     }
     else {
         let localListNode = document.createElement('ul');
