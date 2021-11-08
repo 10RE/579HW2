@@ -80,3 +80,7 @@ nav li {
     margin: 0 10px;
     font-size: 20px;
 }
+
+ul li:last-child {
+    text-transform: lowercase;
+}
