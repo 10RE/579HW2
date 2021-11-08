@@ -48,7 +48,6 @@ var savedWords = [];
 var word = '';
 
 function getRhymes(rel_rhy, callback) {
-    console.log(`https://api.datamuse.com/words?${(new URLSearchParams({rel_rhy})).toString()}`);
     fetch(`https://api.datamuse.com/words?${(new URLSearchParams({rel_rhy})).toString()}`)
         .then((response) => response.json())
         .then((data) => {
@@ -59,8 +58,6 @@ function getRhymes(rel_rhy, callback) {
 }
 
 function getSynoyms(ml, callback) {
-    console.log(`https://api.datamuse.com/words?${(new URLSearchParams({ml})).toString()}`);
-    //fetch(`https://api.datamuse.com/words?${(new URLSearchParams({ml})).toString()}`)
     fetch(`https://api.datamuse.com/words?ml=ringing+in+the+ears`)
         .then((response) => response.json())
         .then((data) => {
@@ -110,7 +107,7 @@ function printRhymes(results) {
     }
     else {
         let tmp_rlt = groupBy(results, 'numSyllables');
-        console.log(tmp_rlt);
+        //console.log(tmp_rlt);
         for (let syl_idx in tmp_rlt) {
             let localTitleNode = document.createElement('div');
             localTitleNode.style = "font-size: 20px";
@@ -138,10 +135,12 @@ function printSynoyms(results) {
         addWordToList('(no Synoyms)', listOutput);
     }
     else {
+        let localListNode = document.createElement('ul');
         for (let idx in results) {
             let result = results[idx];
-            addWordToList(result.word);
+            addWordToList(result.word, localListNode);
         }
+        listOutput.append(localListNode);
     }
 }
 
@@ -168,7 +167,7 @@ showRhymesButton.addEventListener('click', () => {
     titleLine.textContent = "...loading";
     getRhymes(word, (results) => {
         clearList();
-        console.log(results);
+        //console.log(results);
         printRhymes(results);
     });
 });
@@ -178,7 +177,7 @@ showSynButton.addEventListener('click', () => {
     titleLine.textContent = "...loading";
     getSynoyms(word, (results) => {
         clearList();
-        console.log(results);
+        //console.log(results);
         printSynoyms(results);
     });
 });
